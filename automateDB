@@ -1,0 +1,13 @@
+#!/bin/bash
+
+currentDate=$(date+%F)
+filePath="backup$currentDate.sql"
+mysqldump −−single−transaction −u UserExamDB −−password=’1234’ "ExamDB" > $filePath
+
+i f [ −f backup/backup∗.sql ] ; then
+echo "delete file backup "
+rm backup/backup∗.sql
+fi
+
+mv $filePath backup/
+exit
