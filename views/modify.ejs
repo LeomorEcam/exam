@@ -1,0 +1,38 @@
+<html>
+<head>
+    <link rel="stylesheet" href="./views/css/modify.css">
+    <title>Modify</title>
+</head>
+<body>
+    <h3>Vocabulary</h3>
+    <form name="entete" class="formations" action="/modify" method="POST">
+        <label for="Word"  class="formGeneral">Word </label>
+        <label for="Translation" class="formGeneral">Translation</label>
+        <label for="Procent" class=" formGeneral price">Procent</label>
+    </form>
+    <% for(let i = 0; i< tabMap.length;i++){ %>
+        <form name= <%=`Vocabulary${i}`%> class="formations" action="/modify" method="POST">
+            <label for="Word"  class="formGeneral"><%=`${tabMap[i].Word}`%> </label>
+            <input type="hidden" name="Word" value=<%=`${tabMap[i].Word}`%>>
+            <label for="Translation" class="formGeneral"><%=`${tabMap[i].Translation}`%></label>
+            <input type="hidden" name="Translation" value=<%=`${tabMap[i].Translation}`%>>
+            <label for="Procent" class=" formGeneral price"><%=`${tabMap[i].Procent}`%></label>
+            <input type="hidden" name="Procent" value=<%=`${tabMap[i].Procent}`%>>
+            <a class="caseButton">
+                <input type="submit" name="button" class="buttonForm" value="Delete">
+            </a>
+        </form>
+    <%};%>
+    <h3>Add new word</h3>
+    <form name= newWord class="formations" action="/modify" method="POST">
+        <label for="Word">Word: </label>
+        <input type="text" name="Word"><br>
+        <label for="Translation">Translation: </label>
+        <input type="text" name="Translation"><br>
+        <a class="caseButton">
+            <input type="submit" name="button" class="buttonForm" value="Submit">
+        </a>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+<head>
+    <link rel="stylesheet" href="./views/css/index.css">
+    <title>Question</title>
+</head>
+<body>
+    <h3>Test yourself</h3>
+    
+    <form name="wordQuestion" class="encodage" action="/" method="POST">
+        <% if(tab.Feedback === "GREAT JOB"){ %>
+            <label for="feedback" class="feedbackG"><%=`${tab.Feedback}`%></label><br>
+        <%}else if(tab.Feedback !== undefined){ %>
+            <label for="feedback" class="feedbackNotG"><%=`${tab.Feedback}`%></label><br>
+        <%};%>
+        <label for="ask" class="askWord">How do you say <%=`${tab.Word}`%>?</label>
+        <input type="hidden" name="pos" value=<%=`${tab.pos}`%>>
+        <input type="hidden" name="Rep" value=<%=`${tab.Translation}`%>>
+        <input type="hidden" name="Id" value=<%=`${tab.Id}`%>>
+        <input type="text" class="Input" name="Answer"><br>
+        <input type="submit" name="askButton" class="buttonForm" value="Submit">
+        
+    </form>
+</body>
+</html>
