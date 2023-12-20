@@ -20,7 +20,7 @@ router.get('/modify',async function(request,response){
 
 router.get('/',async function(request,response){
     const listWord = await wordTab.Word.loadMany();
-    const aleat = Math.round(Math.random() * listWord.length);
+    const aleat = Math.round(Math.random() * (listWord.length-1));
     console.log(aleat);
     const myStruct = {
         "Word": listWord[aleat].Word,
@@ -62,7 +62,7 @@ router.post('/',async function(request,response){
     console.log(feedback)
     
     
-    let aleat = Math.round(Math.random() * listWord.length);
+    let aleat = Math.round(Math.random() * (listWord.length-1));
     const wAleat = listWord[aleat].Word;
     console.log("-----------------------------");
     console.log(listWord.length);

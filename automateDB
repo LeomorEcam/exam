@@ -1,13 +1,14 @@
 #!/bin/bash
 
-currentDate=$(date+%F)
+currentDate=$(date +%F)
 filePath="backup$currentDate.sql"
-mysqldump â--single-transaction â-u UserExamDB â--password='1234' "ExamDB" > $filePath
+mysqldump --single-transaction -u UserExamDB --password='1234' "ExamDB" > $filePath
 
-i f [â-f /var/backups/db_web/backup*.sql ]; then
-echo "delete file backup "
-rm /var/backups/db_web/backup*.sql
+if [ -f /var/backups/db_web/backup*.sql ]; then
+	echo "delete file backup"
+	sudo rm /var/backups/db_web/backup*.sql
 fi
 
-mv $filePath /var/backups/db_web/
+sudo mv $filePath /var/backups/db_web/
+echo $(date) > /var/backups/db_web/db_backup.log
 exit
